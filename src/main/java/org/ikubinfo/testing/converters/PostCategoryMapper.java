@@ -8,6 +8,7 @@ import org.ikubinfo.testing.entities.Post;
 import org.ikubinfo.testing.entities.PostCategory;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
@@ -21,6 +22,9 @@ public interface PostCategoryMapper {
     @Mapping(source = "categoryDTO",target = "category",qualifiedByName = "toCategoryEntity")
     @Mapping(source = "postDTO",target = "post",qualifiedByName = "toPostEntity")
     PostCategory postCategoryDTOToPostCategory(PostCategoryDTO postCategoryDTO);
+    @Mapping(source = "categoryDTO",target = "category",qualifiedByName = "toCategoryEntity")
+    @Mapping(source = "postDTO",target = "post",qualifiedByName = "toPostEntity")
+    PostCategory postCategoryDTOToPostCategory(PostCategoryDTO postCategoryDTO, @MappingTarget PostCategory postCategory);
 
     @Named("toCategoryDto")
     default CategoryDTO toCategoryDTO(Category category){

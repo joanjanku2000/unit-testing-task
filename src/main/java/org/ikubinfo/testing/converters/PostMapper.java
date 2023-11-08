@@ -6,6 +6,7 @@ import org.ikubinfo.testing.entities.Post;
 import org.ikubinfo.testing.entities.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
@@ -19,6 +20,8 @@ public interface PostMapper {
 
     @Mapping(source = "userDTO",target = "user",qualifiedByName = "toUserEntity")
     Post postDTOToPost(PostDTO postDTO);
+    @Mapping(source = "userDTO",target = "user",qualifiedByName = "toUserEntity")
+    Post postDTOToPost(PostDTO postDTO,@MappingTarget  Post post);
 
     @Named("toUserDTO")
     default UserDTO toDTO(User user) {
